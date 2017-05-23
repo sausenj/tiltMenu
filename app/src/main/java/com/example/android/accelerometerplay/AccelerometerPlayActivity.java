@@ -81,7 +81,7 @@ public class AccelerometerPlayActivity extends Activity {
 
         // instantiate our simulation view and set it as the activity's content
         mSimulationView = new SimulationView(this);
-        mSimulationView.setBackgroundResource(R.drawable.wood);
+        mSimulationView.setBackgroundResource(R.drawable.menu);
         setContentView(mSimulationView);
     }
 
@@ -115,8 +115,8 @@ public class AccelerometerPlayActivity extends Activity {
     }
 
     class SimulationView extends FrameLayout implements SensorEventListener {
-        // diameter of the balls in meters
-        private static final float sBallDiameter = 0.004f;
+        // diameter of the balls in meters CHANGEBD SIZE
+        private static final float sBallDiameter = 0.010f;
         private static final float sBallDiameter2 = sBallDiameter * sBallDiameter;
 
         private final int mDstWidth;
@@ -209,7 +209,7 @@ public class AccelerometerPlayActivity extends Activity {
          * A particle system is just a collection of particles
          */
         class ParticleSystem {
-            static final int NUM_PARTICLES = 5;
+            static final int NUM_PARTICLES = 1;
             private Particle mBalls[] = new Particle[NUM_PARTICLES];
 
             ParticleSystem() {
@@ -336,8 +336,8 @@ public class AccelerometerPlayActivity extends Activity {
             mMetersToPixelsY = mYDpi / 0.0254f;
 
             // rescale the ball so it's about 0.5 cm on screen
-            mDstWidth = (int) (sBallDiameter * mMetersToPixelsX + 0.5f);
-            mDstHeight = (int) (sBallDiameter * mMetersToPixelsY + 0.5f);
+            mDstWidth = (int) (sBallDiameter * mMetersToPixelsX + 3f);
+            mDstHeight = (int) (sBallDiameter * mMetersToPixelsY + 3f);
             mParticleSystem = new ParticleSystem();
 
             Options opts = new Options();
@@ -348,11 +348,11 @@ public class AccelerometerPlayActivity extends Activity {
         @Override
         protected void onSizeChanged(int w, int h, int oldw, int oldh) {
             // compute the origin of the screen relative to the origin of
-            // the bitmap
+            // the bitmap CHANGED
             mXOrigin = (w - mDstWidth) * 0.5f;
             mYOrigin = (h - mDstHeight) * 0.5f;
-            mHorizontalBound = ((w / mMetersToPixelsX - sBallDiameter) * 0.5f);
-            mVerticalBound = ((h / mMetersToPixelsY - sBallDiameter) * 0.5f);
+            mHorizontalBound = ((w / mMetersToPixelsX - sBallDiameter) * 0.25f);
+            mVerticalBound = ((h / mMetersToPixelsY - sBallDiameter) * 0.15f);
         }
 
         @Override
