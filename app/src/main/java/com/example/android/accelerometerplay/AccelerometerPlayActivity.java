@@ -19,9 +19,10 @@ package com.example.android.accelerometerplay;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.BitmapFactory.Options;
+import android.graphics.Canvas;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -30,6 +31,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
+import android.provider.MediaStore;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -37,6 +39,7 @@ import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.FrameLayout;
 
 /**
@@ -83,6 +86,9 @@ public class AccelerometerPlayActivity extends Activity {
         mSimulationView = new SimulationView(this);
         mSimulationView.setBackgroundResource(R.drawable.menu);
         setContentView(mSimulationView);
+
+        // Button
+        Button myButton = (Button) findViewById(R.id.button);
     }
 
     @Override
@@ -355,6 +361,10 @@ public class AccelerometerPlayActivity extends Activity {
             mVerticalBound = ((h / mMetersToPixelsY - sBallDiameter) * 0.15f);
         }
 
+        private long lastUpdate = 0;
+        private float last_x, last_y, last_z;
+        private static final int SHAKE_THRESHOLD = 600;
+
         @Override
         public void onSensorChanged(SensorEvent event) {
             if (event.sensor.getType() != Sensor.TYPE_ACCELEROMETER)
@@ -420,10 +430,22 @@ public class AccelerometerPlayActivity extends Activity {
 
             // and make sure to redraw asap
             invalidate();
+
+            // Button
+            Button myButton = (Button) findViewById(R.id.button);
         }
 
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        }
+    }
+
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+
+    public void dispatchTakePictureIntent(View view) {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) !=null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
     }
 }

@@ -23,69 +23,21 @@
     android:background="@drawable/menu">
 
 
-    <RadioButton
-        android:id="@+id/radioButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/button"
+        android:layout_width="69dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="258dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="70dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:drawable/btn_star_big_on"
+        android:onClick="dispatchTakePictureIntent"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
-
-    <RadioButton
-        android:id="@+id/radioButton4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="297dp"
-        app:layout_constraintHorizontal_bias="0.338" />
-
-    <RadioButton
-        android:id="@+id/radioButton5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="218dp"
-        app:layout_constraintHorizontal_bias="0.24" />
-
-    <RadioButton
-        android:id="@+id/radioButton6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="218dp"
-        app:layout_constraintHorizontal_bias="0.74" />
-
-    <RadioButton
-        android:id="@+id/radioButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="297dp"
-        app:layout_constraintHorizontal_bias="0.643" />
-
-    <RadioButton
-        android:id="@+id/radioButton7"
-        style="@android:style/Widget.CompoundButton.RadioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:button="@android:drawable/ic_menu_camera"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="173dp" />
-
-    <Button
-        android:id="@+id/button5"
-        style="@android:style/Animation"
-        android:layout_width="76dp"
-        android:layout_height="68dp"
-        android:background="@android:drawable/sym_def_app_icon"
-        android:hapticFeedbackEnabled="true"
-        tools:clickable="true"
-        tools:layout_editor_absoluteX="21dp"
-        tools:layout_editor_absoluteY="30dp" />
+        app:layout_constraintVertical_bias="1.0" />
 </android.support.constraint.ConstraintLayout>
